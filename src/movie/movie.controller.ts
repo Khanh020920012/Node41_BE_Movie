@@ -31,7 +31,7 @@ export class MovieController {
 
   @Get(':id')
   async findOne(@Param('id') id: string) {
-    return this.movieService.findOne(+id);
+    return await this.movieService.findOne(+id);
   }
 
   @Patch(':id')

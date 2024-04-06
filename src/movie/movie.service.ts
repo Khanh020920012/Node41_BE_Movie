@@ -10,7 +10,7 @@ export class MovieService {
 
   async create(name: string, trailer: string, image: string, description: string
     , premiere_day: Date, rating: number, hot: boolean, showing: boolean,
-    showing_soon: boolean) {
+    showing_soon: boolean) : Promise<any>{
     return await this.prisma.movie.create({
       data: {
         movie_name: name,
@@ -77,7 +77,7 @@ export class MovieService {
       }
     });
     if(!checkMovie){
-      throw new NotFoundException('Cinema Chain not found');
+      throw new NotFoundException('Movie Schedule not found');
     }
 
     await this.prisma.movie.delete({
