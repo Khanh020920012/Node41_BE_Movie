@@ -101,7 +101,7 @@ model user {
   fullname      String?         @db.VarChar(100)
   email         String?         @db.VarChar(50)
   phone         String?         @db.VarChar(10)
-  password      String?         @db.VarChar(20)
+  password      String?         @db.VarChar(255)
   user_type     String?         @db.VarChar(10)
   movie_booking movie_booking[]
 }

@@ -7,10 +7,13 @@ import { CinemaModule } from './cinema/cinema.module';
 import { SeatModule } from './seat/seat.module';
 import { MovieModule } from './movie/movie.module';
 import { MovieScheduleModule } from './movie_schedule/movie_schedule.module';
-import { MovieScheduleModule } from './movie_schedule/movie_schedule.module';
+import { MovieBookingModule } from './movie_booking/movie_booking.module';
+import { UserModule } from './user/user.module';
+import { BannerModule } from './banner/banner.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
-  imports: [CinemaChainModule, CinemaGroupModule, CinemaModule, SeatModule, MovieModule, MovieScheduleModule],
+  imports: [CinemaChainModule, CinemaGroupModule, CinemaModule, SeatModule, MovieModule, MovieScheduleModule, BannerModule, UserModule, MovieBookingModule, AuthModule],
   controllers: [AppController],
   providers: [AppService],
 })
