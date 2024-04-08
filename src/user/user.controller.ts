@@ -1,7 +1,8 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Req, Put } from '@nestjs/common';
 import { UserService } from './user.service';
 import { UseGuards } from '@nestjs/common';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
+import { Request } from 'express';
 
 @Controller('user')
 export class UserController {
@@ -27,15 +28,23 @@ export class UserController {
     return await this.userService.findOne(+id);
   }
 
-  @Patch(':id')
+  @UseGuards(JwtAuthGuard)
+  @Get('current-user')
+  async getCurrentUserData(
+    @Req() req: Request) {
+    return await this.userService.getCurrentUser(req);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Put('update-user')
   async update(
-    @Param('id') id: string, 
+    @Req() req: Request,
     @Body('fullname') fullname: string,
     @Body('email') email: string,
     @Body('phone') phone: string,
     @Body('password') password: string,
     @Body('user_type') user_type: string) {
-    return this.userService.update(+id, fullname, email, phone, password, user_type);
+    return this.userService.update(req, fullname, email, phone, password, user_type);
   }
 
   @Delete(':id')
@@ -49,11 +58,5 @@ export class UserController {
     @Body('password') password: string,
   ){
     return this.userService.userLogin(email, password);
-  }
-
-  @UseGuards(JwtAuthGuard)
-  @Get('resource')
-  getProtectedResource(){
-    return { message: 'This is a protected resource' };
   }
 }
