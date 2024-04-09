@@ -1,4 +1,4 @@
-import { BadRequestException, HttpException, HttpStatus, Injectable, NotFoundException } from '@nestjs/common';
+import { BadRequestException, HttpException, HttpStatus, Injectable, NotFoundException, UnauthorizedException } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { PrismaClient } from '@prisma/client';
@@ -131,6 +131,108 @@ export class UserService {
     });
 
     const {password, ...data} = user;
+    return data;
+  }
+
+  async getUserTypes() {
+    const uniqueUserTypes = await this.prisma.user.findMany({
+      distinct: ['user_type'],
+      select: {
+        user_type: true
+      },
+    });
+    return uniqueUserTypes;
+  }
+
+  async getUserByType(type: string) {
+    const usersByType = await this.prisma.user.findMany({
+      where: {
+        user_type: type
+      }
+    });
+
+    usersByType.forEach((user) => {
+      delete user.password
+    });
+    return usersByType;
+  }
+
+  async getUserCountsByType(type: string) {
+    const count = await this.prisma.user.count({
+      where: {
+        user_type: type
+      }
+    });
+    return count;
+  }
+
+  async getUserByTypePaging(type: string, page: number, pageSize: number) {
+    const usersByType = await this.prisma.user.findMany({
+      where: {
+        user_type: type
+      },
+      take: pageSize,
+      skip: page
+    });
+
+    usersByType.forEach((user) => {
+      delete user.password
+    });
+    return usersByType;
+  }
+
+  async getUsersByFilters(fullname?: string, email?: string, phone?: string){
+    const users = await this.prisma.user.findMany({
+      where: {
+        AND: [
+          fullname ? { fullname: { contains: fullname } } : {},
+          email ? {email: {equals: email}} : {},
+          phone ? {phone: {equals: phone}}: {}
+        ],
+      },
+    });
+
+    users.forEach((user) => {
+      delete user.password;
+     });
+
+    return users;
+  }
+
+  async getUsersByFiltersPaging(page: number,
+    pageSize: number, fullname?: string, email?: string, phone?: string){
+    const users = await this.prisma.user.findMany({
+      where: {
+        AND: [
+          fullname ? { fullname: { contains: fullname } } : {},
+          email ? {email: {equals: email}} : {},
+          phone ? {phone: {equals: phone}}: {}
+        ],
+      },
+      take: pageSize,
+      skip: page
+    });
+
+    users.forEach((user) => {
+      delete user.password;
+     });
+
+    return users;
+  }
+
+  async getUserData(req: Request, id: number){
+    const tokenData = req.user as JwtPayload;
+    if(tokenData.user_type != "ADMIN"){
+      throw new UnauthorizedException('NOT AUTHORIZE TO DO THIS ACTION');
+    }
+
+    const userData = await this.prisma.user.findFirst({
+      where: {
+        id
+      }
+    })
+
+    const {password, ...data} = userData;
     return data;
   }
 }
