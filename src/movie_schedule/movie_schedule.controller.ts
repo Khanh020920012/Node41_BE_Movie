@@ -1,13 +1,15 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@nestjs/common';
 import { MovieScheduleService } from './movie_schedule.service';
 import { CreateMovieScheduleDto } from './dto/create-movie_schedule.dto';
 import { UpdateMovieScheduleDto } from './dto/update-movie_schedule.dto';
+import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 
 @Controller('movie-schedule')
 export class MovieScheduleController {
   constructor(private readonly movieScheduleService: MovieScheduleService) {}
 
   @Post('create')
+  @UseGuards(JwtAuthGuard)
   async create(
     @Body('movie_id') movie_id: number,
     @Body('showing_datetime') showing_datetime: Date,
@@ -21,7 +23,7 @@ export class MovieScheduleController {
     return this.movieScheduleService.findAll();
   }
 
-  @Get(':id')
+  @Get()
   async findOne(@Param('id') id: string) {
     return await this.movieScheduleService.findOne(+id);
   }
@@ -39,5 +41,12 @@ export class MovieScheduleController {
   @Delete(':id')
   async remove(@Param('id') id: string) {
     return await this.movieScheduleService.remove(+id);
+  }
+
+  @Get('available-seats')
+  async getAvailableSeats(
+    @Body('scheduleId') scheduleId: number
+  ){
+    return await this.movieScheduleService.getAvailableSeatForMovieSchedule(scheduleId);
   }
 }

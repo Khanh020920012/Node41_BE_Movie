@@ -1,18 +1,19 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards, Req } from '@nestjs/common';
 import { MovieBookingService } from './movie_booking.service';
-import { CreateMovieBookingDto } from './dto/create-movie_booking.dto';
-import { UpdateMovieBookingDto } from './dto/update-movie_booking.dto';
+import { Request } from 'express';
+import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 
 @Controller('movie-booking')
 export class MovieBookingController {
   constructor(private readonly movieBookingService: MovieBookingService) {}
 
   @Post('create')
+  @UseGuards(JwtAuthGuard)
   async create(
-    @Body('user_id') user_id: number,
+    @Req() req: Request,
     @Body('schedule_id') schedule_id: number,
-    @Body('seat') seat: number,) {
-    return await this.movieBookingService.create(user_id, schedule_id, seat);
+    @Body('list_seats') list_seats: any[],) {
+    return await this.movieBookingService.create(req, schedule_id, list_seats);
   }
 
   @Get()

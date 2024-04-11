@@ -70,4 +70,44 @@ export class MovieScheduleService {
       where: {id: id}
     })
   }
+
+  async getAvailableSeatForMovieSchedule(scheduleId: number){
+    const movieSchedule = await this.prisma.movie_schedule.findFirst({
+      where:{
+        id: scheduleId
+      }
+    });
+
+    if(!movieSchedule){
+      throw new NotFoundException(`Not found movie schedule ID: ${scheduleId}`);
+    }
+
+    const allSeat = await this.prisma.seat.findMany({
+      where: {
+        cinema_id: movieSchedule.cinema_id
+      }
+    });
+
+    if(!allSeat){
+      throw new NotFoundException(`Not found seat for cinema: ${movieSchedule.cinema_id}`);
+    }
+
+    const movieBookingForSchedule = await this.prisma.movie_booking.findMany({
+      where: {
+        schedule_id: scheduleId
+      }
+    });
+
+    if(!movieBookingForSchedule){
+      throw new NotFoundException(`Not found movie booking for schedule: ${scheduleId}`);
+    }
+
+    const bookedSeatsMap = movieBookingForSchedule.map(booking => booking.seat);
+    const availableSeats = allSeat.filter(seat => !bookedSeatsMap.includes(seat.id));
+
+    return{
+      availableSeats,
+      scheduleId
+    }
+  }
 }
