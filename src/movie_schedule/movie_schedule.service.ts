@@ -110,4 +110,16 @@ export class MovieScheduleService {
       scheduleId
     }
   }
+
+  async getMovieScheduleFromMovieId(movie_id: number){
+    return await this.prisma.movie_schedule.findMany({
+      where: {
+        movie_id
+      },
+      include: {
+        movie: true,
+        cinema: true
+      }
+    });
+  }
 }

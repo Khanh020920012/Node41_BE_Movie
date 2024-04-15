@@ -49,4 +49,11 @@ export class MovieScheduleController {
   ){
     return await this.movieScheduleService.getAvailableSeatForMovieSchedule(scheduleId);
   }
+
+  @Get('movie-schedule-by-movie-id/:movie_id')
+  async getMovieSchedulesByMovieId(
+    @Param('movie_id') movie_id: number
+  ){
+    return await this.movieScheduleService.getMovieScheduleFromMovieId(+movie_id);
+  }
 }

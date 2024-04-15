@@ -66,4 +66,45 @@ export class CinemaChainService {
       where: {id: id}
     })
   }
+
+  async getCinemaGroupInChain(id: number){
+    const checkCinemaChain = await this.prisma.cinema_chain.findFirst({
+      where: {
+        id: id
+      }
+    });
+    if(!checkCinemaChain){
+      throw new NotFoundException('Cinema Chain not found');
+    };
+
+    let cinemaGroup = await this.prisma.cinema_group.findMany({
+      where: {
+        cinema_chain_id: id
+      }
+    });
+
+    if(!cinemaGroup){
+      throw new NotFoundException('No Cinema Group in Chain not found');
+    }
+    return cinemaGroup;
+  }
+
+  async getMovieScheduleForChain(chain_id: number, movie_id: number) {
+   
+    let movie_schedules = await this.prisma.movie_schedule.findMany({
+      where: {
+        movie_id: movie_id,
+        cinema: {
+          cinema_group: {
+            cinema_chain_id: chain_id
+          }
+        }
+      },
+      include: {
+        cinema: true,
+        movie: true
+      }
+    });
+    return movie_schedules;
+  }  
 }

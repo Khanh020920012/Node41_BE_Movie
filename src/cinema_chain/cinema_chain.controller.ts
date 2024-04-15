@@ -38,4 +38,19 @@ export class CinemaChainController {
   async remove(@Param('id') id: string) {
     return await this.cinemaChainService.remove(+id);
   }
+
+  @Get('movie-group-in-chain/:id')
+  async getMovieGroupInChain(
+    @Param('id') id: number
+  ){
+    return await this.cinemaChainService.getCinemaGroupInChain(+id);
+  }
+
+  @Get('movie-schedules-for-chain/:chain_id/:movie_id')
+  async getMovieScheduleForChain(
+    @Param('chain_id') chain_id: number,
+    @Param('movie_id') movie_id: number
+  ){
+    return await this.cinemaChainService.getMovieScheduleForChain(+chain_id, +movie_id);
+  }
 }
