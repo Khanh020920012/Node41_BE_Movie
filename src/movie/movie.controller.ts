@@ -51,4 +51,20 @@ export class MovieController {
   async remove(@Param('id') id: string) {
     return await this.movieService.remove(+id);
   }
+
+  @Get('get-movie-with-name/:name')
+  async getMovieWithName(
+    @Param('name') name: string
+  ){
+    return await this.movieService.getMoviesWithName(name);
+  }
+
+  @Get('get-movie-with-name-paging/:name/:page/:pageSize')
+  async getMovieWithNamePagin(
+    @Param('name') name: string,
+    @Param('page') page: number,
+    @Param('pageSize') pageSize: number
+  ){
+    return await this.movieService.getMoviesWithNamePaging(name, +page, +pageSize);
+  }
 }

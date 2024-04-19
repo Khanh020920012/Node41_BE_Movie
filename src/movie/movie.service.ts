@@ -84,4 +84,30 @@ export class MovieService {
       where: {id: id}
     })
   }
+
+  async getMoviesWithName(name: string) {
+    const movies = await this.prisma.movie.findMany({
+      where: {
+        movie_name: {
+          contains: name
+        }
+      }
+    });
+
+    return movies
+  }
+
+  async getMoviesWithNamePaging(name: string, page: number, pageSize: number){
+    const movies = await this.prisma.movie.findMany({
+      where: {
+        movie_name: {
+          contains: name
+        }
+      },
+      take: pageSize,
+      skip: page
+    });
+
+    return movies
+  }
 }
