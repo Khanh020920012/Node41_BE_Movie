@@ -9,8 +9,9 @@ export class MovieService {
   prisma = new PrismaClient();
 
   async create(name: string, trailer: string, image: string, description: string
-    , premiere_day: Date, rating: number, hot: boolean, showing: boolean,
-    showing_soon: boolean) : Promise<any>{
+    , premiere_day: Date, rating: string, hot: string, showing: string,
+    showing_soon: string) : Promise<any>{
+    let parseRating = parseInt(rating);  
     return await this.prisma.movie.create({
       data: {
         movie_name: name,
@@ -18,10 +19,10 @@ export class MovieService {
         image,
         description,
         premiere_day,
-        rating,
-        hot,
-        showing,
-        showing_soon
+        rating: parseRating,
+        hot: hot == "true",
+        showing: showing == "true",
+        showing_soon: showing_soon == "true"
       }
     });
   }

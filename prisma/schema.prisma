@@ -49,7 +49,7 @@ model movie {
   id             Int              @id @default(autoincrement())
   movie_name     String?          @db.VarChar(100)
   trailer        String?          @db.VarChar(100)
-  image          String?          @db.VarChar(100)
+  image          String?          @db.Text
   description    String?          @db.VarChar(255)
   premiere_day   DateTime?        @db.DateTime(0)
   rating         Int?
