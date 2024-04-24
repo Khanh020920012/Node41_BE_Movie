@@ -1,7 +1,9 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable, NotFoundException, UnauthorizedException } from '@nestjs/common';
 import { CreateMovieDto } from './dto/create-movie.dto';
 import { UpdateMovieDto } from './dto/update-movie.dto';
 import { PrismaClient } from '@prisma/client';
+import { JwtPayload } from 'src/auth/jwt-payload';
+import { Request } from 'express';
 
 @Injectable()
 export class MovieService {
@@ -38,17 +40,18 @@ export class MovieService {
       }
     });
     if (!movie){
-      throw new NotFoundException('Cinema Chain not found');
+      throw new NotFoundException('Movie not found');
     }
     return movie;
   }
 
-  async update(id: number, name: string, trailer: string, image: string, description: string
-    , premiere_day: Date, rating: number, hot: boolean, showing: boolean,
-    showing_soon: boolean) : Promise<any> {
+  async update(id: string, name: string, trailer: string, image: string, description: string
+    , premiere_day: Date, rating: string, hot: string, showing: string,
+    showing_soon: string) : Promise<any> {
+    const checkId = parseInt(id);  
     const checkMovie = await this.prisma.movie.findFirst({
       where: {
-        id: id
+        id: checkId
       }
     });
     if(!checkMovie){
@@ -56,22 +59,26 @@ export class MovieService {
     }
 
     return await this.prisma.movie.update({
-      where: {id: id},
+      where: {id: checkId},
       data: {
         movie_name: name,
         trailer,
         image,
         description,
         premiere_day,
-        rating,
-        hot,
-        showing,
-        showing_soon
+        rating: parseInt(rating),
+        hot: hot == "true",
+        showing: showing == "true",
+        showing_soon: showing_soon == "true"
       }
     });
   }
 
-  async remove(id: number) : Promise<void> {
+  async remove(id: number, req: Request) : Promise<void> {
+    const tokenData = req.user as JwtPayload;
+    if(tokenData.user_type != "ADMIN"){
+      throw new UnauthorizedException('NOT AUTHORIZE TO DO THIS ACTION');
+    }
     const checkMovie = await this.prisma.movie.findFirst({
       where: {
         id: id
@@ -110,5 +117,16 @@ export class MovieService {
     });
 
     return movies
+  }
+
+  async getMoviesInRange(fromDate: Date, toDate: Date, page: number, pageSize: number){
+    return await this.prisma.movie.findMany({
+      where: {
+        premiere_day: {
+          gte: fromDate,
+          lte: toDate
+        }
+      }
+    })
   }
 }
