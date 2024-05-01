@@ -3,7 +3,9 @@ import { MovieScheduleService } from './movie_schedule.service';
 import { CreateMovieScheduleDto } from './dto/create-movie_schedule.dto';
 import { UpdateMovieScheduleDto } from './dto/update-movie_schedule.dto';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
+import { ApiExcludeController } from '@nestjs/swagger';
 
+@ApiExcludeController()
 @Controller('movie-schedule')
 export class MovieScheduleController {
   constructor(private readonly movieScheduleService: MovieScheduleService) {}

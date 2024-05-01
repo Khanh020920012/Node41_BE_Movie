@@ -2,7 +2,9 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards, Req } fro
 import { MovieBookingService } from './movie_booking.service';
 import { Request } from 'express';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
+import { ApiExcludeController } from '@nestjs/swagger';
 
+@ApiExcludeController()
 @Controller('movie-booking')
 export class MovieBookingController {
   constructor(private readonly movieBookingService: MovieBookingService) {}

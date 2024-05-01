@@ -3,7 +3,9 @@ import { CinemaChainService } from './cinema_chain.service';
 import { CreateCinemaChainDto } from './dto/create-cinema_chain.dto';
 import { UpdateCinemaChainDto } from './dto/update-cinema_chain.dto';
 import { cinema_chain } from '@prisma/client';
+import { ApiExcludeController } from '@nestjs/swagger';
 
+@ApiExcludeController()
 @Controller('cinema-chain')
 export class CinemaChainController {
   constructor(private readonly cinemaChainService: CinemaChainService) {}

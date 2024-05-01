@@ -2,7 +2,9 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { CinemaGroupService } from './cinema_group.service';
 import { CreateCinemaGroupDto } from './dto/create-cinema_group.dto';
 import { UpdateCinemaGroupDto } from './dto/update-cinema_group.dto';
+import { ApiExcludeController } from '@nestjs/swagger';
 
+@ApiExcludeController()
 @Controller('cinema-group')
 export class CinemaGroupController {
   constructor(private readonly cinemaGroupService: CinemaGroupService) {}

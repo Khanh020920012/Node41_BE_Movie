@@ -5,7 +5,9 @@ import {diskStorage} from 'multer';
 import { readFileSync } from 'fs';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { Request } from 'express';
+import { ApiExcludeController } from '@nestjs/swagger';
 
+@ApiExcludeController()
 @Controller('movie')
 export class MovieController {
   constructor(private readonly movieService: MovieService) {}
