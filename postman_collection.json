@@ -1,0 +1,989 @@
+{
+	"info": {
+		"_postman_id": "0f5f24a1-a985-4f1d-9552-04d1a981f3e2",
+		"name": "Movie Capstone",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32465260"
+	},
+	"item": [
+		{
+			"name": "QuanLyNguoiDung",
+			"item": [
+				{
+					"name": "LayDanhSachLoaiNguoiDung",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/QuanLyNguoiDung/LayDanhSachLoaiNguoiDung",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"QuanLyNguoiDung",
+								"LayDanhSachLoaiNguoiDung"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DangNhap",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"dtrinh@gmail.com\",\n    \"password\": \"duong1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/QuanLyNguoiDung/DangNhap",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"QuanLyNguoiDung",
+								"DangNhap"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DangKy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fullname\": \"TT\",\n    \"email\": \"test@email.com\",\n    \"phone\": \"55555\",\n    \"password\": \"test123\",\n    \"user_type\": \"USER\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/QuanLyNguoiDung/DangKy",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"QuanLyNguoiDung",
+								"DangKy"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LayDanhSachNguoiDung",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/QuanLyNguoiDung/LayDanhSachNguoiDung?user_type=USER",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"QuanLyNguoiDung",
+								"LayDanhSachNguoiDung"
+							],
+							"query": [
+								{
+									"key": "user_type",
+									"value": "USER"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LayDanhSachNguoiDungPhanTrang",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/QuanLyNguoiDung/LayDanhSachNguoiDungPhanTrang?user_type=USER&page=1&pageSize=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"QuanLyNguoiDung",
+								"LayDanhSachNguoiDungPhanTrang"
+							],
+							"query": [
+								{
+									"key": "user_type",
+									"value": "USER"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "pageSize",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TimKiemNguoiDung",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/QuanLyNguoiDung/TimKiemNguoiDung?fullname=tony&email&phone",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"QuanLyNguoiDung",
+								"TimKiemNguoiDung"
+							],
+							"query": [
+								{
+									"key": "fullname",
+									"value": "tony"
+								},
+								{
+									"key": "email",
+									"value": null
+								},
+								{
+									"key": "phone",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TimKiemNguoiDungPhanTrang",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/QuanLyNguoiDung/TimKiemNguoiDungPhanTrang?fullname=ton&email&phone&page=1&pageSize=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"QuanLyNguoiDung",
+								"TimKiemNguoiDungPhanTrang"
+							],
+							"query": [
+								{
+									"key": "fullname",
+									"value": "ton"
+								},
+								{
+									"key": "email",
+									"value": null
+								},
+								{
+									"key": "phone",
+									"value": null
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "pageSize",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ThongTinTaiKhoan",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZnVsbG5hbWUiOiJUcmluaCBEb25nIER1b25nIiwiZW1haWwiOiJkdHJpbmhAZ21haWwuY29tIiwicGhvbmUiOiI5MDk5OTk5OTkiLCJ1c2VyX3R5cGUiOiJBRE1JTiIsImlhdCI6MTcxNDY2Mzc1NSwiZXhwIjoxNzE0NjY3MzU1fQ.-F_GCGc7GBsfuIoniPmtxX4_ZDzabyybEfDRYGSVcdk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/QuanLyNguoiDung/ThongTinTaiKhoan",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"QuanLyNguoiDung",
+								"ThongTinTaiKhoan"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LayThongTinNguoiDung",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZnVsbG5hbWUiOiJUcmluaCBEb25nIER1b25nIiwiZW1haWwiOiJkdHJpbmhAZ21haWwuY29tIiwicGhvbmUiOiI5MDk5OTk5OTkiLCJ1c2VyX3R5cGUiOiJBRE1JTiIsImlhdCI6MTcxNDY2Mzc1NSwiZXhwIjoxNzE0NjY3MzU1fQ.-F_GCGc7GBsfuIoniPmtxX4_ZDzabyybEfDRYGSVcdk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/QuanLyNguoiDung/LayThongTinNguoiDung?user_id=3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"QuanLyNguoiDung",
+								"LayThongTinNguoiDung"
+							],
+							"query": [
+								{
+									"key": "user_id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CapNhatThongTinNguoiDung",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZnVsbG5hbWUiOiJUcmluaCBEb25nIER1b25nIiwiZW1haWwiOiJkdHJpbmhAZ21haWwuY29tIiwicGhvbmUiOiI5MDk5OTk5OTkiLCJ1c2VyX3R5cGUiOiJBRE1JTiIsImlhdCI6MTcxNDY2Mzc1NSwiZXhwIjoxNzE0NjY3MzU1fQ.-F_GCGc7GBsfuIoniPmtxX4_ZDzabyybEfDRYGSVcdk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fullname\": \"Duong hihihi\",\n    \"password\": null,\n    \"email\": null,\n    \"phone\": \"911\",\n    \"user_type\": null\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"QuanLyNguoiDung",
+								"CapNhatThongTinNguoiDung"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "XoaNguoiDung",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiZnVsbG5hbWUiOiJUVCIsImVtYWlsIjoidGVzdEBlbWFpbC5jb20iLCJwaG9uZSI6IjU1NTU1IiwidXNlcl90eXBlIjoiVVNFUiIsImlhdCI6MTcxNDY2NTM1NywiZXhwIjoxNzE0NjY4OTU3fQ.qoVbRBDow9cXwyruMYkdqsLAdXS6bJBdnc6P_q9q5TY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/QuanLyNguoiDung/XoaNguoiDung",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"QuanLyNguoiDung",
+								"XoaNguoiDung"
+							],
+							"query": [
+								{
+									"key": "user_id",
+									"value": "4",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "QuanLyDatVe",
+			"item": [
+				{
+					"name": "DatVe",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"scheduke_id\": 4,\n    \"list_seats\": [\n        {\n            \"seat_id\": 9\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/QuanLyDatVe/DatVe",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"QuanLyDatVe",
+								"DatVe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LayDanhSachPhongVe",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/QuanLyDatVe/LayDanhSachPhongVe?scheduleId=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"QuanLyDatVe",
+								"LayDanhSachPhongVe"
+							],
+							"query": [
+								{
+									"key": "scheduleId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TaoLichChieu",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZnVsbG5hbWUiOiJUcmluaCBEb25nIER1b25nIiwiZW1haWwiOiJkdHJpbmhAZ21haWwuY29tIiwicGhvbmUiOiI5MDk5OTk5OTkiLCJ1c2VyX3R5cGUiOiJBRE1JTiIsImlhdCI6MTcxNDU3NjY4MCwiZXhwIjoxNzE0NTgwMjgwfQ.BuV039DrzVThALZE-UMVStqhVZ2tlWIl_U8Y0D59Ypk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"movie_id\": 3,\n    \"showing_datetime\": \"2024-05-01T00:00:00\",\n    \"ticket_price\": 20,\n    \"cinema_id\": 3\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/QuanLyDatVe/TaoLichChieu",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"QuanLyDatVe",
+								"TaoLichChieu"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "QuanLyPhim",
+			"item": [
+				{
+					"name": "Create Banner",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "LayDanhSachBanner",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/QuanLyPhim/LayDanhSachBanner",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"QuanLyPhim",
+								"LayDanhSachBanner"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LayDanhSachPhim",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/QuanLyPhim/LayDanhSachPhim?movieName=kong",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"QuanLyPhim",
+								"LayDanhSachPhim"
+							],
+							"query": [
+								{
+									"key": "movieName",
+									"value": "kong"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LayDanhSachPhimPhanTrang",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/QuanLyPhim/LayDanhSachPhimPhanTrang?movieName=king&page=4&pageSize=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"QuanLyPhim",
+								"LayDanhSachPhimPhanTrang"
+							],
+							"query": [
+								{
+									"key": "movieName",
+									"value": "king"
+								},
+								{
+									"key": "page",
+									"value": "4"
+								},
+								{
+									"key": "pageSize",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LayDanhSachPhimTheoNgay",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/QuanLyPhim/LayDanhSachPhimTheoNgay?movieName=king&fromDate=2024-04-01&toDate=2024-12-01&page=0&pageSize=5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"QuanLyPhim",
+								"LayDanhSachPhimTheoNgay"
+							],
+							"query": [
+								{
+									"key": "movieName",
+									"value": "king"
+								},
+								{
+									"key": "fromDate",
+									"value": "2024-04-01"
+								},
+								{
+									"key": "toDate",
+									"value": "2024-12-01"
+								},
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "pageSize",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ThemPhimUploadHinh",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "The King's Speech",
+									"type": "text"
+								},
+								{
+									"key": "trailer",
+									"value": "the_king_speech.mov",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/Users/duongtrinh/Desktop/Hinh dep chat luong/images.jpeg"
+								},
+								{
+									"key": "description",
+									"value": "King Speech Movie",
+									"type": "text"
+								},
+								{
+									"key": "premiere_day",
+									"value": "2024-05-03T00:00:00Z",
+									"type": "text"
+								},
+								{
+									"key": "rating",
+									"value": "8",
+									"type": "text"
+								},
+								{
+									"key": "hot",
+									"value": "true",
+									"type": "text"
+								},
+								{
+									"key": "showing",
+									"value": "true",
+									"type": "text"
+								},
+								{
+									"key": "showing_soon",
+									"value": "false",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/QuanLyPhim/ThemPhimUploadHinh",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"QuanLyPhim",
+								"ThemPhimUploadHinh"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CapNhatPhimUpload",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZnVsbG5hbWUiOiJEdW9uZyBoaWhpaGkiLCJlbWFpbCI6ImR0cmluaEBnbWFpbC5jb20iLCJwaG9uZSI6IjkxMSIsInVzZXJfdHlwZSI6IkFETUlOIiwiaWF0IjoxNzE0NzUzMTQxLCJleHAiOjE3MTQ3NTY3NDF9.HorCf9bDYDNOQ6qMix3BdhctwmcziEDxnQu58Cx_lCk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "The Kings Speech",
+									"type": "text"
+								},
+								{
+									"key": "trailer",
+									"value": "king_of_the_jungle.mov",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/Users/duongtrinh/Desktop/tarzan_2.png",
+									"disabled": true
+								},
+								{
+									"key": "description",
+									"value": "King Speech Movie",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "premiere_day",
+									"value": "2024-05-03T00:00:00Z",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "rating",
+									"value": "8",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "hot",
+									"value": "true",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "showing",
+									"value": "true",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "showing_soon",
+									"value": "false",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "id",
+									"value": "6",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/QuanLyPhim/CapNhatPhimUpload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"QuanLyPhim",
+								"CapNhatPhimUpload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "XoaPhim",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZnVsbG5hbWUiOiJEdW9uZyBoaWhpaGkiLCJlbWFpbCI6ImR0cmluaEBnbWFpbC5jb20iLCJwaG9uZSI6IjkxMSIsInVzZXJfdHlwZSI6IkFETUlOIiwiaWF0IjoxNzE0NzUzMTQxLCJleHAiOjE3MTQ3NTY3NDF9.HorCf9bDYDNOQ6qMix3BdhctwmcziEDxnQu58Cx_lCk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/QuanLyPhim/XoaPhim?movieId=6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"QuanLyPhim",
+								"XoaPhim"
+							],
+							"query": [
+								{
+									"key": "movieId",
+									"value": "6"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LayThongTinPhim",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/QuanLyPhim/LayThongTinPhim?movieId=2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"QuanLyPhim",
+								"LayThongTinPhim"
+							],
+							"query": [
+								{
+									"key": "movieId",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "QuanLyRap",
+			"item": [
+				{
+					"name": "LayThongTinHeThongRap",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/QuanLyRap/LayThongTinHeThongRap?cinemaChainId=2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"QuanLyRap",
+								"LayThongTinHeThongRap"
+							],
+							"query": [
+								{
+									"key": "cinemaChainId",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LayThongTinCumRapTheoHeThong",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/QuanLyRap/LayThongTinCumRapTheoHeThong?cinemaChainId=2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"QuanLyRap",
+								"LayThongTinCumRapTheoHeThong"
+							],
+							"query": [
+								{
+									"key": "cinemaChainId",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LayThongTinLichChieuHeThongRap",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/QuanLyRap/LayThongTinLichChieuHeThongRap?cinemaChainId=2&movieId=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"QuanLyRap",
+								"LayThongTinLichChieuHeThongRap"
+							],
+							"query": [
+								{
+									"key": "cinemaChainId",
+									"value": "2"
+								},
+								{
+									"key": "movieId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LayThongTinLichChieuPhim",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/QuanLyRap/LayThongTinLichChieuPhim?movieId=3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"QuanLyRap",
+								"LayThongTinLichChieuPhim"
+							],
+							"query": [
+								{
+									"key": "movieId",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
