@@ -13,11 +13,12 @@ import { BannerModule } from './banner/banner.module';
 import { AuthModule } from './auth/auth.module';
 import { QuanLyDatVeModule } from './QuanLyDatVe/QuanLyDatVe.module';
 import { QuanLyNguoiDungModule } from './QuanLyNguoiDung/QuanLyNguoiDung.module';
+import { QuanLyRapModule } from './QuanLyRap/QuanLyRap.module';
 
 @Module({
   imports: [CinemaChainModule, CinemaGroupModule, CinemaModule, SeatModule, 
     MovieModule, MovieScheduleModule, BannerModule, UserModule, MovieBookingModule, 
-    AuthModule, QuanLyDatVeModule, QuanLyNguoiDungModule],
+    AuthModule, QuanLyDatVeModule, QuanLyNguoiDungModule, QuanLyRapModule],
   controllers: [AppController],
   providers: [AppService],
 })
