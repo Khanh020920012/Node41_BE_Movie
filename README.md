@@ -26,48 +26,37 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
-## Installation
+## Import Database
+```bash
+Make Sure to import the db_movie.sql to get the database
+```
+
+## Database Connection
+```bash
+Make sure your database instance is running on port 3307
+```
+
+## Import Postman collection
+```bash
+Import postman_collection.json to your Postman client to test the API.
+```
+## Install Dependencies
 
 ```bash
 $ npm install
 ```
 
-## Running the app
+## Start app
 
 ```bash
-# development
-$ npm run start
-
 # watch mode
 $ npm run start:dev
 
-# production mode
-$ npm run start:prod
 ```
 
-## Test
-
+## Swagger page
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+After starting the server, the swagger page can be accessed through http://localhost:3000/swagger#/
 ```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
 
 Nest is [MIT licensed](LICENSE).
