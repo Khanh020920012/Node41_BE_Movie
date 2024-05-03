@@ -1,10 +1,10 @@
 -- -------------------------------------------------------------
--- TablePlus 5.9.0(538)
+-- TablePlus 6.0.0(550)
 --
 -- https://tableplus.com/
 --
 -- Database: db_movie
--- Generation Time: 2024-04-06 21:47:27.6230
+-- Generation Time: 2024-05-03 23:32:37.9540
 -- -------------------------------------------------------------
 
 
@@ -25,7 +25,7 @@ CREATE TABLE `banner` (
   PRIMARY KEY (`id`),
   KEY `movie_id` (`movie_id`),
   CONSTRAINT `banner_ibfk_1` FOREIGN KEY (`movie_id`) REFERENCES `movie` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE `cinema` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -57,7 +57,7 @@ CREATE TABLE `movie` (
   `id` int NOT NULL AUTO_INCREMENT,
   `movie_name` varchar(100) DEFAULT NULL,
   `trailer` varchar(100) DEFAULT NULL,
-  `image` varchar(100) DEFAULT NULL,
+  `image` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
   `description` varchar(255) DEFAULT NULL,
   `premiere_day` datetime DEFAULT NULL,
   `rating` int DEFAULT NULL,
@@ -65,7 +65,7 @@ CREATE TABLE `movie` (
   `showing` tinyint(1) DEFAULT NULL,
   `showing_soon` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE `movie_booking` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -77,7 +77,7 @@ CREATE TABLE `movie_booking` (
   KEY `schedule_id` (`schedule_id`),
   CONSTRAINT `movie_booking_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`),
   CONSTRAINT `movie_booking_ibfk_2` FOREIGN KEY (`schedule_id`) REFERENCES `movie_schedule` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE `movie_schedule` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -90,7 +90,7 @@ CREATE TABLE `movie_schedule` (
   KEY `movie_id` (`movie_id`),
   CONSTRAINT `movie_schedule_ibfk_1` FOREIGN KEY (`cinema_id`) REFERENCES `cinema` (`id`),
   CONSTRAINT `movie_schedule_ibfk_2` FOREIGN KEY (`movie_id`) REFERENCES `movie` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE `seat` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -100,17 +100,21 @@ CREATE TABLE `seat` (
   PRIMARY KEY (`id`),
   KEY `cinema_id` (`cinema_id`),
   CONSTRAINT `seat_ibfk_1` FOREIGN KEY (`cinema_id`) REFERENCES `cinema` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE `user` (
   `id` int NOT NULL AUTO_INCREMENT,
   `fullname` varchar(100) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
   `phone` varchar(10) DEFAULT NULL,
-  `password` varchar(20) DEFAULT NULL,
+  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `user_type` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+INSERT INTO `banner` (`id`, `movie_id`, `banner_image`) VALUES
+(1, 1, 'king_kong.jpeg'),
+(2, 1, 'king_kong_promotion.jpeg');
 
 INSERT INTO `cinema` (`id`, `cinema_name`, `cinema_group_id`) VALUES
 (1, 'CGV_D5_1', 2),
@@ -127,6 +131,25 @@ INSERT INTO `cinema_group` (`id`, `group_name`, `address`, `cinema_chain_id`) VA
 (3, 'CGV_district_10', 'Nguyen Tri Phuong street, district 10', 2),
 (4, 'CGV_premium', 'Nguyen Tri Phuong street, district 1', 2);
 
+INSERT INTO `movie` (`id`, `movie_name`, `trailer`, `image`, `description`, `premiere_day`, `rating`, `hot`, `showing`, `showing_soon`) VALUES
+(1, 'King Kong', 'king_kong.mp3', 'King Kong poster.jpeg', 'King Kong Movie 2025', '2024-04-06 15:30:00', 9, 1, 1, 0),
+(2, 'Kingsman Origin', 'kings_man_trailer.jpeg', 'kings_man_poster.jpeg', 'kingmans origin', '2024-05-01 00:00:00', 8, 1, 0, 1),
+(3, 'King Of Monsters', 'monster_king.mov', 'monster_king.jpeg', 'Godzilla fighting to be the king of monster', '2024-06-01 00:00:00', 10, 1, 0, 1),
+(4, 'King of the Jungle', 'king_of_the_jungle.mov', 'image', 'disney tarzan movie', '2025-12-12 00:00:00', 8, 1, 0, 1);
+
+INSERT INTO `movie_booking` (`id`, `user_id`, `schedule_id`, `seat`) VALUES
+(1, 2, 1, 1),
+(2, 2, 1, 2),
+(9, 2, 1, 3),
+(10, 3, 1, 4),
+(11, 1, NULL, 9);
+
+INSERT INTO `movie_schedule` (`id`, `cinema_id`, `movie_id`, `showing_datetime`, `ticket_price`) VALUES
+(1, 1, 1, '2024-04-11 15:18:48', 500),
+(2, 2, 1, '2024-04-15 15:18:48', 500),
+(3, 3, 1, '2024-04-17 15:18:48', 500),
+(4, 3, 3, '2024-04-30 17:00:00', 20);
+
 INSERT INTO `seat` (`id`, `seat_name`, `seat_type`, `cinema_id`) VALUES
 (1, 'FRONT_ROW_1', 'NORMAL', 1),
 (2, 'FRONT_ROW_2', 'NORMAL', 1),
@@ -135,7 +158,20 @@ INSERT INTO `seat` (`id`, `seat_name`, `seat_type`, `cinema_id`) VALUES
 (5, 'FRONT_ROW_5', 'NORMAL', 1),
 (6, 'COUPLE_1', 'COUPLE', 1),
 (7, 'COUPLE_2', 'COUPLE', 1),
-(8, 'COUPLE_3', 'COUPLE', 1);
+(8, 'COUPLE_3', 'COUPLE', 1),
+(9, 'FRONT_ROW_1', 'NORMAL', 3),
+(10, 'FRONT_ROW_2', 'NORMAL', 3),
+(11, 'FRONT_ROW_3', 'NORMAL', 3),
+(12, 'FRONT_ROW_4', 'NORMAL', 3),
+(13, 'FRONT_ROW_5', 'NORMAL', 3),
+(14, 'COUPLE_1', 'COUPLE', 3),
+(15, 'COUPLE_2', 'COUPLE', 3),
+(16, 'COUPLE_3', 'COUPLE', 3);
+
+INSERT INTO `user` (`id`, `fullname`, `email`, `phone`, `password`, `user_type`) VALUES
+(1, 'Duong hihihi', 'dtrinh@gmail.com', '911', '$2b$05$LvJpj6JZ/eurih8cc7b8iOMDJKmg.TNy.PIiBFfjnBgOAKvr5I2HG', 'ADMIN'),
+(2, 'Tony Teo', 'teo123@mail.com', '12345555', '$2b$05$yrVzqXnbjGwqeTQZdEf2H.k3r9YqHcF8e7G95KDdbMdB5npMRWcVW', 'USER'),
+(3, 'Tonnie Tam', 'ttam4456@mail.com', '55555', '$2b$05$AgHFV7.DvJcnWYoMmSUtg.UrUUj8nkknrBtHAxcQmlFkTLrVjrRcS', 'USER');
 
 
 
