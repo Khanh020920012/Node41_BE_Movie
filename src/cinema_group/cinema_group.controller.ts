@@ -42,3 +42,4 @@ export class CinemaGroupController {
     return await this.cinemaGroupService.remove(+id);
   }
 }
+//

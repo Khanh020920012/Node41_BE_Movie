@@ -105,3 +105,5 @@ model user {
   user_type     String?         @db.VarChar(10)
   movie_booking movie_booking[]
 }
+
+//

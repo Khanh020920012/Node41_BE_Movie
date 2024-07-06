@@ -76,3 +76,4 @@ export class QuanLyRapController {
         return await this.quanLyRapService.getMovieScheduleFromMovieId(+movieId);
     }
 }
+//

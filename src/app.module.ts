@@ -24,3 +24,4 @@ import { QuanLyPhimModule } from './QuanLyPhim/QuanLyPhim.module';
   providers: [AppService],
 })
 export class AppModule {}
+//

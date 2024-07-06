@@ -56,3 +56,4 @@ export class CinemaChainController {
     return await this.cinemaChainService.getMovieScheduleForChain(+chain_id, +movie_id);
   }
 }
+//

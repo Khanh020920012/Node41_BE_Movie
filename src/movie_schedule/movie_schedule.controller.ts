@@ -59,3 +59,4 @@ export class MovieScheduleController {
     return await this.movieScheduleService.getMovieScheduleFromMovieId(+movie_id);
   }
 }
+//

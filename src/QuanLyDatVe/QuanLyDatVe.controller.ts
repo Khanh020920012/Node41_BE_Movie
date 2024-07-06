@@ -99,3 +99,4 @@ export class QuanLyDatVeController {
         return await this.quanLyDatVeService.getAvailableSeatForMovieSchedule(+scheduleId);
     }
 }
+//

@@ -40,3 +40,4 @@ export class CinemaController {
     return this.cinemaService.remove(+id);
   }
 }
+//

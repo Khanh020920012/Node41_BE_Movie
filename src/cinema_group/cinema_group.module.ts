@@ -8,3 +8,4 @@ import { ResponseService } from 'src/utils/response.service';
   providers: [CinemaGroupService, ResponseService],
 })
 export class CinemaGroupModule {}
+//

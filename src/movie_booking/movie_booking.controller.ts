@@ -42,3 +42,4 @@ export class MovieBookingController {
     return await this.movieBookingService.remove(+id);
   }
 }
+//

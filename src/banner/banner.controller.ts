@@ -39,3 +39,4 @@ export class BannerController {
     return await this.bannerService.remove(+id);
   }
 }
+//

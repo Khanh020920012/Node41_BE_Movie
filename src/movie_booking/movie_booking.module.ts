@@ -7,3 +7,4 @@ import { MovieBookingController } from './movie_booking.controller';
   providers: [MovieBookingService],
 })
 export class MovieBookingModule {}
+//

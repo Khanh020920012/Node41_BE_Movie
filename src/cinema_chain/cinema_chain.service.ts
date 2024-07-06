@@ -108,3 +108,4 @@ export class CinemaChainService {
     return movie_schedules;
   }  
 }
+//

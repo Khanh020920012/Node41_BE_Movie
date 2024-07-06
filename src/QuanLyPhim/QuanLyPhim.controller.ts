@@ -289,3 +289,5 @@ export class QuanLyPhimController {
         return await this.quanLyPhimService.findMovie(+movieId);
     }
 }
+
+//

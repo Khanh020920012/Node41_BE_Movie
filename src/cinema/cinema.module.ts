@@ -7,3 +7,4 @@ import { CinemaController } from './cinema.controller';
   providers: [CinemaService],
 })
 export class CinemaModule {}
+//

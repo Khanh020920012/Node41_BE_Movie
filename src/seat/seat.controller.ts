@@ -41,3 +41,4 @@ export class SeatController {
     return await this.seatService.remove(+id);
   }
 }
+//

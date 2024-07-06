@@ -7,3 +7,4 @@ import { CinemaChainController } from './cinema_chain.controller';
   providers: [CinemaChainService],
 })
 export class CinemaChainModule {}
+//

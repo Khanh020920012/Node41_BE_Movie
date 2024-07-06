@@ -7,3 +7,4 @@ import { MovieScheduleController } from './movie_schedule.controller';
   providers: [MovieScheduleService],
 })
 export class MovieScheduleModule {}
+//
