@@ -24,7 +24,7 @@
 
 ## Description
 
-This is Trịnh Đông Dương final Capstone project.
+This is Trương Quốc Khánh final Capstone project.
 Selected Topic: API Movie
 
 ## Import Database
